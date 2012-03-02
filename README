@@ -1,0 +1,30 @@
+--------------
+style.css
+--------------
+added:
+/* =============================================================================
+   apply a natural box layout model to all elements
+   http://paulirish.com/2012/box-sizing-border-box-ftw/
+   ========================================================================== */
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+--------------
+script.js
+--------------
+created carrier function: an object in which load all actions to be performed when the page loads
+
+
+--------------
+plugins.js
+--------------
+created "Utils" object, containing general purpose functions, flags, constants and other various utilities
+
+--------------
+index.html
+--------------
+added "ie" class to all HTML tag instances created via conditional comment
