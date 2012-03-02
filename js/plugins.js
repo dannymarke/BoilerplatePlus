@@ -45,6 +45,29 @@ var Utils = {
   }
 };
 
+Utils.init = function(options) {
+	var defaults = {
+		'deviceClass' : true, //add iPhone, iPad, Android class to body 
+		'orientationClass' : true, //add landscape || portrait to body
+		'externalLnk': true, //use class external for link _blank
+		'emptyLnk': true, //automatic prevent default on link with href="#"
+		'placeholder': true, //IE fallback for input placeholder attr	
+	}
+	
+    this.options = jQuery.extend( {}, defaults, options) ;
+    
+	
+	if(this.options.deviceClass) this.setDeviceClass();
+	if(this.options.orientationClass) {
+		this.detectOrientation();
+		window.onorientationchange = this.detectOrientation;
+	}	
+	if(this.options.externalLnk) this.setExternalLink();
+	if(this.options.emptyLnk) this.setEmptyLink();
+	if(this.options.placeholder) this.setInputPlaceholder();
+}
+
+
 Utils.IS_HANDHELD = (Utils.IS_IPHONE_OR_IPOD || Utils.IS_IPAD || Utils.IS_ANDROID);
 
 Utils.slug = function(_str){
@@ -75,9 +98,10 @@ Utils.setDeviceClass = function() {
 
 Utils.detectOrientation = function() {
   if(Utils.IS_HANDHELD){
-    Utils.CURRENT_ROTATION = ( orientation == 0 || orientation == 180 )?'portrait':'landscape';
+    Utils.CURRENT_ROTATION = ( window.orientation == 0 || window.orientation == 180 )?'portrait':'landscape';
     jQuery('body').removeClass('portrait').removeClass('landscape').addClass(Utils.CURRENT_ROTATION);
   }
+
 };
 
 Utils.setExternalLink = function() {
@@ -141,3 +165,4 @@ Utils.readUrlParams = function(param_name) {
     return map;
   }
 };
+
