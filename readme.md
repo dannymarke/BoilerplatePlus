@@ -63,11 +63,11 @@ The Unlicense (aka: public domain)
 Added rule in order to apply a natural box layout model to all elements
 [article by Paul Irish](http://paulirish.com/2012/box-sizing-border-box-ftw/)
 
-## script.js
+### script.js
 created "carrier" function: an object in which load all actions to be performed when the page loads
 
-## plugins.js
+### plugins.js
 created "Utils" object, containing general purpose functions, flags, constants and other various utilities
 
-## index.html
+### index.html
 added "ie" class to all HTML tag instances created via conditional comment
